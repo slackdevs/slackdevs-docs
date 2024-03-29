@@ -41,4 +41,29 @@ SlackDevs Docs is the definitive solution for managing your documentation. Wheth
 
 For a detailed view of our current progress and upcoming tasks, please visit our [Projects page](https://github.com/orgs/slackdevs/projects/2/views/1).
 
+## Getting Started
 
+
+**1. Setting Up Environment Variables:**
+
+Copy `.env.sample` to create a `.env` file. Fill in the necessary details as indicated, leaving out any sensitive or unnecessary information. This file is primarily used by the `docker-compose-directus.yml` configuration.
+
+**2. Initializing a Mkdocs-Material Project:**
+
+To start a new Mkdocs-Material project, use either `docker-compose-mkdm-new.yml` for a fresh project or `docker-compose-mkdm-clone.yml` for cloning an existing project. This will create a copy of the documentation and configuration files from the Mkdocs-Material sample. A new project will be initiated with a basic Mkdocs template you have to add material template and configurations.
+
+**3. Setting Up a Directus Project:**
+
+Execute the `docker-compose-directus.yml` file to establish a new Directus project, which will initially be empty. You can access the Directus admin panel at `http://localhost:8055`.
+
+**4. Launching the Documentation:**
+
+> Before serving your Mkdocs documentation locally, ensure to comment out or delete the hooks present in the `sdd-docs/mkdocs.yml` file, approximately around line 102. [TODO] Fix this.
+
+Use `docker-compose-mkdm-serve.yml` to serve your Mkdocs documentation locally. Your docs will be available at `http://localhost:8000`.
+
+**5. Building the Documentation:**
+
+To build your Mkdocs documentation, run `docker-compose-mkdm-build.yml`. This compiles your documentation into static files ready for deployment.
+
+Your docs will be available at `sdd-docs/site`
