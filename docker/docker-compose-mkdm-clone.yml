@@ -1,0 +1,22 @@
+# Create a new mkdocs-material project with the configuration amd docs files of mkdocs-material. 
+version: '3.7'
+
+services:
+  slackdevs-docs-mkdm-clone:
+    image: alpine:latest  # Usando Alpine Linux como base
+    volumes:
+      - ../sdd-docs:/docs  # Monta un volumen del host para conservar los datos
+    working_dir: /docs
+    command: >
+      /bin/sh -c "
+        apk add --no-cache git &&  # Instala Git
+        git clone https://github.com/squidfunk/mkdocs-material.git &&  # Clona el repositorio
+        cd mkdocs-material &&
+        git sparse-checkout init --cone &&
+        git sparse-checkout set docs material &&
+        mv docs ../docs/ &&
+        mv material ../ &&
+        mv mkdocs.yml ../ &&
+        cd .. &&
+        rm -rf mkdocs-material &&
+        echo 'Directorios y archivo específicos movidos con éxito.'"

@@ -1,0 +1,25 @@
+# Launch a Directus Instance
+version: '3.8'
+
+services:
+  slackdevs-docs-directus:
+    image: directus/directus:10.10.4
+    container_name: slackdevs-docs-directus
+    ports: 
+      - 8055:8055
+    volumes:
+      - ../sdd-admin/database:/directus/database
+      - ../sdd-admin/uploads:/directus/uploads
+      - ../sdd-admin/extensions:/directus/extensions
+    environment:
+      KEY: ${KEY}
+      SECRET: ${SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DB_CLIENT: ${DB_CLIENT}
+      DB_FILENAME: ${DB_FILENAME}
+      WEBSOCKETS_ENABLED: ${WEBSOCKETS_ENABLED}
+      EXTENSIONS_AUTO_RELOAD: ${EXTENSIONS_AUTO_RELOAD}
+      CORS_CREDENTIALS: ${CORS_CREDENTIALS} 
+      CONTENT_SECURITY_POLICY_USE_DEFAULT: ${CONTENT_SECURITY_POLICY_USE_DEFAULT} 
+      CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC: ${CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC} 

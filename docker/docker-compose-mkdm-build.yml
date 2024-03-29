@@ -1,0 +1,11 @@
+# Build the current mkdocs-material project
+version: '3.8'
+
+services:
+  slackdevs-docs-mkdm-build:
+    image: squidfunk/mkdocs-material
+    volumes:
+      - ../sdd-docs:/docs
+    ports:
+      - "8000:8000"
+    command: build

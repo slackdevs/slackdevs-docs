@@ -1,0 +1,11 @@
+# Run the current mkdocs-material project
+version: '3.8'
+
+services:
+  slackdevs-docs-mkdm-serve:
+    image: squidfunk/mkdocs-material
+    volumes:
+      - ../sdd-docs:/docs
+    ports:
+      - "8000:8000"
+    command: serve -a 0.0.0.0:8000
